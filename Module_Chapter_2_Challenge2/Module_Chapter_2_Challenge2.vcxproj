@@ -21,9 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{984ece11-8ed2-4874-9261-4d73115027a2}</ProjectGuid>
-    <RootNamespace>Module1Chapter2Challenge1</RootNamespace>
+    <ProjectGuid>{1ab11ea7-82d0-4d4a-8552-394180234f7b}</ProjectGuid>
+    <RootNamespace>ModuleChapter2Challenge2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Module1_Chapter2_Challenge2</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -139,7 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SumAndAverage.cpp" />
+    <ClCompile Include="cube.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
