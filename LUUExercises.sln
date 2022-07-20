@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Module1_Chapter2_Challenge1", "Module1_Chapter2_Challenge1\Module1_Chapter2_Challenge1.vcxproj", "{984ECE11-8ED2-4874-9261-4D73115027A2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Module1_Chapter2_Challenge2", "Module_Chapter_2_Challenge2\Module_Chapter_2_Challenge2.vcxproj", "{1AB11EA7-82D0-4D4A-8552-394180234F7B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Module1_Chapter2_Challenge2", "Module1_Chapter2_Challenge2\Module_Chapter_2_Challenge2.vcxproj", "{1AB11EA7-82D0-4D4A-8552-394180234F7B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Module1_Chapter3_Challenge1", "Module1_Chapter3_Challenge1\Module1_Chapter3_Challenge1.vcxproj", "{F5EB1E87-7D7C-46C2-B462-E51D6C5FF4CF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Module1_Chapter4_Challenge2", "Module1_Chapter4_Challenge2\Module1_Chapter4_Challenge2.vcxproj", "{5CC52A1C-26DA-41D3-8009-B2349706DBE8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Module1_Chapter3_Challenge2", "Module1_Chapter3_Challenge2\Module1_Chapter4_Challenge2.vcxproj", "{5CC52A1C-26DA-41D3-8009-B2349706DBE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
