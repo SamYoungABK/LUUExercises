@@ -4,17 +4,17 @@
 
 using std::vector;
 
-enum class VEHICLE_MANAGER_ERROR
-{
-	SUCCESS,
-	UNDEFINED_VEHICLE_TYPE,
-};
-
 
 class VehicleManager
 {
+public:
+	enum class VEHICLE_MANAGER_ERROR
+	{
+		SUCCESS,
+		UNDEFINED_VEHICLE_TYPE,
+	};
+
 private:
-	int m_vehicleCount;
 	vector<Vehicle*> m_vehicleList;
 
 public:

@@ -7,7 +7,7 @@
 using std::string;
 
 
-VEHICLE_MANAGER_ERROR VehicleManager::newVehicle(
+VehicleManager::VEHICLE_MANAGER_ERROR VehicleManager::newVehicle(
 	Vehicle::VEHICLE_TYPE vehicleType,
 	double fuelCapacity,
 	double fuelConsumption)
@@ -18,21 +18,21 @@ VEHICLE_MANAGER_ERROR VehicleManager::newVehicle(
 	if (vehicleType == Vehicle::VEHICLE_TYPE::CAR)
 	{
 		Car* carToAdd = new Car();
-		carToAdd->setName((string)"Car" + (char)('0' + m_vehicleList.size()));
+		carToAdd->m_name = (string)"Car" + (char)('0' + m_vehicleList.size());
 
 		m_vehicleList.push_back(carToAdd);
 	}
 	else if (vehicleType == Vehicle::VEHICLE_TYPE::BOAT)
 	{
 		Boat* boatToAdd = new Boat();
-		boatToAdd->setName((string)"Boat" + (char)('0' + m_vehicleList.size()));
+		boatToAdd->m_name = (string)"Boat" + (char)('0' + m_vehicleList.size());
 
 		m_vehicleList.push_back(boatToAdd);
 	}
 	else if (vehicleType == Vehicle::VEHICLE_TYPE::PLANE)
 	{
 		Airplane* planeToAdd = new Airplane();
-		planeToAdd->setName((string)"Airplane" + (char)('0' + m_vehicleList.size()));
+		planeToAdd->m_name = (string)"Airplane" + (char)('0' + m_vehicleList.size());
 
 		m_vehicleList.push_back(planeToAdd);
 	}
@@ -56,7 +56,7 @@ vector<Vehicle*> VehicleManager::getVehicle(string name)
 
 	for (Vehicle* v : m_vehicleList)
 	{
-		if (v->getName() == name)
+		if (v->m_name == name)
 			result.push_back(v);
 	}
 

@@ -1,18 +1,9 @@
 #include "Vehicle.h"
 
-void Vehicle::setName(string name)
-{
-	m_name = name;
-}
-
-string Vehicle::getName()
-{
-	return m_name;
-}
-
 void Vehicle::output()
 {
-	double fuelPercentage = m_fuelCapacity != 0 ? m_fuel / m_fuelCapacity * 100 : 0;
+	double fuelPercentage =
+		m_fuelCapacity != 0 ? m_fuel / m_fuelCapacity * 100 : 0;
 
 	printf("\n-------------------------------------\n");
 	printf("Name: %s\n", m_name.c_str());
