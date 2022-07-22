@@ -10,6 +10,7 @@
 void interactionLoop();
 void newVehicleMenu();
 void renameVehicleMenu();
+Vehicle* selectVehicle();
 void fuelVehicleMenu();
 void driveVehicleMenu();
 
@@ -62,29 +63,37 @@ void renameVehicleMenu() {
 		return;
 	}
 
+	Vehicle* selectedVehicle = selectVehicle();
+	if (selectedVehicle == nullptr) return;
 
+	printf("What would you like to rename the vehicle to?\n");
+	printf("(string): ");
+	string newName;
+	string oldName = selectedVehicle->getName();
+	std::cin >> newName;
+	selectedVehicle->setName(newName);
+	printf("Renamed %s to %s.\n", oldName.c_str(), newName.c_str());
+	return;
+}
+
+Vehicle* selectVehicle()
+{
+	int vehicleIndex;
 	printf("\n\nType the position of Vehicle in the list:\n");
 	g_vm.listVehicles();
 	printf("(0-%d): ", g_vm.getVehicleCount() - 1);
-	int vehicleIndex;
+
 	std::cin >> vehicleIndex;
 
 	if (vehicleIndex < 0 || vehicleIndex >= g_vm.getVehicleCount())
 	{
 		printf("\nERROR: Vehicle index out of range.\n");
-		return;
+		return nullptr;
 	}
 
 	printf("Selected: \n");
 	g_vm.getVehicle(vehicleIndex)->output();
-	printf("What would you like to rename the vehicle to?\n");
-	printf("(string): ");
-	string newName;
-	string oldName = g_vm.getVehicle(vehicleIndex)->getName();
-	std::cin >> newName;
-	g_vm.getVehicle(vehicleIndex)->setName(newName);
-	printf("Renamed %s to %s.\n", oldName.c_str(), newName.c_str());
-	return;
+	return g_vm.getVehicle(vehicleIndex);
 }
 
 void newVehicleMenu() {
@@ -108,70 +117,55 @@ void newVehicleMenu() {
 	}
 }
 
-void fuelVehicleMenu() {
+void fuelVehicleMenu()
+{
 	if(g_vm.getVehicleCount()<=0)
 	{ 
 		printf("\nERROR: Can't add fuel to vehicles that haven't been created yet!\n");
 		return;
 	}
 
+	Vehicle* selectedVehicle = selectVehicle();
+	if (selectedVehicle == nullptr) return;
 	
-	printf("\n\nType the position of Vehicle in the list:\n");
-	g_vm.listVehicles();
-	printf("(0-%d): ", g_vm.getVehicleCount()-1);
-	int vehicleIndex;
-	std::cin >> vehicleIndex;
-
-	if (vehicleIndex < 0 || vehicleIndex >= g_vm.getVehicleCount())
-	{
-		printf("\nERROR: Vehicle index out of range.\n");
-		return;
-	}
-
-	printf("Selected: \n");
-	g_vm.getVehicle(vehicleIndex)->output();
 	printf("How much fuel would you like to supply?\n");
 	printf("(>=0): ");
 	double fuelInput;
 	std::cin >> fuelInput;
+
 	if (fuelInput < 0)
 	{
 		printf("\nERROR: Can't add negative fuel.\n");
 		return;
 	}
-	g_vm.getVehicle(vehicleIndex)->addFuel(fuelInput);
-	printf("Added %g fuel to vehicle named %s.\n", fuelInput, g_vm.getVehicle(vehicleIndex)->getName().c_str());
+
+	selectedVehicle->addFuel(fuelInput);
+	printf("Added %g fuel to vehicle named %s.\n",
+		fuelInput,
+		selectedVehicle->getName().c_str());
+
 	return;
 }
 
-void driveVehicleMenu() {
+void driveVehicleMenu()
+{
 	if (g_vm.getVehicleCount() <= 0)
 	{
 		printf("\nERROR: Can't drive vehicles that haven't been created yet!\n");
 		return;
 	}
 
+	Vehicle* selectedVehicle = selectVehicle();
+	if (selectedVehicle == nullptr) return;
 
-	printf("\n\nType the position of Vehicle in the list:\n");
-	g_vm.listVehicles();
-	printf("(0-%d): ", g_vm.getVehicleCount() - 1);
-	int vehicleIndex;
-	std::cin >> vehicleIndex;
-
-	if (vehicleIndex < 0 || vehicleIndex >= g_vm.getVehicleCount())
-	{
-		printf("\nERROR: Vehicle index out of range.\n");
-		return;
-	}
-
-	printf("Selected: \n");
-	g_vm.getVehicle(vehicleIndex)->output();
 	printf("How far would you like to drive?\n");
 	printf("(>=0): ");
 	double distance;
 	std::cin >> distance;
 	
-	Vehicle::VEHICLE_DRIVE_RESULT driveResult = g_vm.getVehicle(vehicleIndex)->drive(distance);
+	Vehicle::VEHICLE_DRIVE_RESULT driveResult =
+		selectedVehicle->drive(distance);
+
 	switch (driveResult) {
 	case Vehicle::VEHICLE_DRIVE_RESULT::NOT_ENOUGH_FUEL:
 		printf("Not enough fuel!");
@@ -181,7 +175,8 @@ void driveVehicleMenu() {
 		return;
 	}
 
-
-	printf("Drove %s for %g miles.\n", g_vm.getVehicle(vehicleIndex)->getName().c_str(), distance);
+	printf("Drove %s for %g miles.\n",
+		selectedVehicle->getName().c_str(), distance);
 	return;
 }
+
