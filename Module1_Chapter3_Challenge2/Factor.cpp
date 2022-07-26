@@ -22,14 +22,15 @@ int main()
 void OutputFactors(int numberToFactor, bool* factors)
 {
 	for (int i = 1; i <= numberToFactor; i++)
-		factors[i - 1] == true ? (printf("%d ", i)) : 0;
+		factors[i] == true ? (printf("%d ", i)) : 0;
 }
 
 bool* GenerateFactors(int numberToFactor) {
-	bool* factors = new bool[numberToFactor];
+	// adding +1 to the size since 0 index will not be used
+	bool* factors = new bool[numberToFactor+1];
 
 	for (int i = 1; i <= numberToFactor; i++)
-		numberToFactor% i == 0 ? factors[i - 1] = true : factors[i - 1] = false;
+		numberToFactor% i == 0 ? factors[i] = true : factors[i] = false;
 
 	return factors;
 }
